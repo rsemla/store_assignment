@@ -11,6 +11,7 @@ function Products(){
             <h2>{tg.age}</h2>
             <h2>{tg.occupation}</h2>
         </div>
+
     )
 
     return(
