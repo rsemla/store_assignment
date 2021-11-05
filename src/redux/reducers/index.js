@@ -6,7 +6,6 @@ const initState = {
 
 const rootReducer = (state = initState, action) => {
 
-
     if (action.type === 'ADD_PERSON') {
         let newArray = state.tags;
         newArray.push(action.person);
