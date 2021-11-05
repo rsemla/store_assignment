@@ -4,11 +4,11 @@ import {add_person} from "../redux/setActions";
 
 function Home(){
 
-    const [obj, setObj]=React.useState({
-        name:"",
-        age:"",
-        occupation:""
-    })
+    const [obj, setObj]=React.useState([{
+        name: "",
+        age: "",
+        occupation: ""
+    }])
 
     const dispatch = useDispatch();
 
@@ -18,21 +18,23 @@ function Home(){
     }
 
     const handleChange = (event) => {
-        if( [event.target.name !==""] || [event.target.name !== null] ) {
         const newInput = {
             ...obj,
             [event.target.name]: event.target.value
         }
                 setObj(newInput);
             }
-            else {
-                setObj(obj);
-            }
 
+
+    const  handleSubmit  = (event) => {
+        if (!obj.name  || !obj.age || !obj.occupation) {
+            event.preventDefault();
+
+        } else {
+            addPerson()
         }
-    const handleSubmit = (event) => {
-        event.preventDefault();
     }
+
 
 
 
@@ -41,12 +43,12 @@ function Home(){
         <div>
             <h1>Home</h1>
             <input type="text" required={true}
-                placeholder={"Name"} name={"name"}  onChange={handleChange}  />
+                placeholder={"Name"} name={"name"} value={obj.name} onChange={handleChange}/>
             <input type="number" required={true}
-                   placeholder={"Age"} name={"age"} onChange={handleChange}/>
+                   placeholder={"Age"} name={"age"} value={obj.age} onChange={handleChange}/>
             <input type="text" required={true}
-                   placeholder={"Occupation"} name={"occupation"} onChange={handleChange}/>
-            <button type="submit" onClick={addPerson}>Submit Person</button>
+                   placeholder={"Occupation"} name={"occupation"} value={obj.occupation} onChange={handleChange}/>
+            <button onClick={handleSubmit}>Submit Person</button>
             </div>
         </form>
 

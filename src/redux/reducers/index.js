@@ -1,6 +1,7 @@
 const initState = {
     name:"Ryan",
     tags:[]
+
 }
 
 const rootReducer = (state = initState, action) => {
